@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // ✅ Inclure header.php APRÈS avoir traité le POST
 require_once __DIR__ . '/../includes/header.php';
 ?>
-?>
+
 
 <div class="container">
     <div class="form-container">

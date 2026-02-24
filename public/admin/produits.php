@@ -20,6 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     redirect(ADMIN_URL . '/produits.php');
 }
 
+// Suppression d'un produit
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
+    $produit_id = (int)$_POST['produit_id'];
+    db_query('DELETE FROM produits WHERE id = ?', [$produit_id]);
+    redirect(ADMIN_URL . '/produits.php');
+}
+
 // Récupérer tous les produits
 $produits = db_fetch_all(
     'SELECT p.*, c.nom as categorie_nom 
@@ -71,6 +78,11 @@ require_once __DIR__ . '/../../includes/header.php';
                         <button type="submit" class="btn btn-sm <?php echo $produit['actif'] ? 'btn-success' : 'btn-danger'; ?>">
                             <?php echo $produit['actif'] ? 'Actif' : 'Inactif'; ?>
                         </button>
+                    </form>
+                    <form method="POST" style="display: inline;" onsubmit="return confirm('Supprimer ce produit définitivement ?')">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="produit_id" value="<?php echo $produit['id']; ?>">
+                        <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                     </form>
                 </td>
                 <td>
