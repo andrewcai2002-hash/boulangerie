@@ -27,6 +27,9 @@ $panier_count = panier_count();
                         <li><a href="<?php echo PUBLIC_URL; ?>/index.php">Accueil</a></li>
                         <li><a href="<?php echo PUBLIC_URL; ?>/catalogue.php">Catalogue</a></li>
                         <li><a href="<?php echo PUBLIC_URL; ?>/informations.php">Informations</a></li>
+                        <?php if ($user): ?>
+                            <li><a href="<?php echo PUBLIC_URL; ?>/mes_commandes.php">Mes commandes</a></li>
+                        <?php endif; ?>
                         <li><a href="<?php echo PUBLIC_URL; ?>/panier.php" class="panier-link">
                             Panier
                             <?php if ($panier_count > 0): ?>

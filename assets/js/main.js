@@ -1,6 +1,4 @@
-/**
- * Boulangerie - JavaScript principal
- */
+// Script principal de la Boulangerie 
 
 // Confirmation avant suppression
 document.addEventListener('DOMContentLoaded', function() {
@@ -65,9 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/**
- * Met à jour le total du panier
- */
+// Met à jour le total du panier
 function updateCartTotal() {
     const table = document.querySelector('.cart-table');
     if (!table) return;
@@ -97,9 +93,7 @@ function updateCartTotal() {
     }
 }
 
-/**
- * Formate un nombre en prix
- */
+// Formate un nombre en prix
 function formatPrice(price) {
     return new Intl.NumberFormat('fr-FR', {
         style: 'currency',
@@ -107,9 +101,7 @@ function formatPrice(price) {
     }).format(price);
 }
 
-/**
- * Affiche/masque un élément
- */
+// Affiche/masque un élément
 function toggle(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -117,17 +109,13 @@ function toggle(elementId) {
     }
 }
 
-/**
- * Valide une adresse email
- */
+// Valide une adresse email
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
-/**
- * Soumet un formulaire après confirmation
- */
+// Soumet un formulaire après confirmation
 function submitFormWithConfirmation(formId, message) {
     if (confirm(message)) {
         document.getElementById(formId).submit();
@@ -136,9 +124,7 @@ function submitFormWithConfirmation(formId, message) {
     return false;
 }
 
-/**
- * Gère la prévisualisation d'images
- */
+// Gère la prévisualisation d'images
 function previewImage(inputId, previewId) {
     const input = document.getElementById(inputId);
     const preview = document.getElementById(previewId);

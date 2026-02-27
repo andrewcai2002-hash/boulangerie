@@ -1,7 +1,5 @@
 <?php
-/**
- * Gestion de l'authentification et de la session
- */
+// Gestion de l'authentification et de la session
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db.php';
@@ -23,9 +21,7 @@ function login_user(array $user): void {
     $_SESSION['role'] = $user['role'];
 }
 
-/**
- * Déconnecte l'utilisateur
- */
+// Déconnecte l'utilisateur
 function logout_user(): void {
     $_SESSION = [];
     session_destroy();
@@ -64,18 +60,14 @@ function is_admin(): bool {
     return is_logged_in() && $_SESSION['role'] === 'admin';
 }
 
-/**
- * Redirige vers la page de connexion si pas connecté
- */
+// Redirige vers la page de connexion si pas connecté
 function require_login(): void {
     if (!is_logged_in()) {
         redirect(PUBLIC_URL . '/connexion.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
     }
 }
 
-/**
- * Redirige ou affiche erreur 403 si pas admin
- */
+// Redirige ou affiche erreur 403 si pas admin
 function require_admin(): void {
     if (!is_admin()) {
         http_response_code(403);

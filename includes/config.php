@@ -1,7 +1,5 @@
 <?php
-/**
- * Configuration de la boulangerie
- */
+// Configuration de la boulangerie
 
 // Configuration base de données
 define('DB_HOST', 'db');
